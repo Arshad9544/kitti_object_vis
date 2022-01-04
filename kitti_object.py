@@ -701,7 +701,8 @@ def show_lidar_on_image(pc_velo, img, calib, img_width, img_height):
             color=tuple(color),
             thickness=-1,
         )
-    cv2.imshow("projection", img)
+    from google.colab.patches import cv2_imshow
+    cv2_imshow(img)
     return img
 
 
