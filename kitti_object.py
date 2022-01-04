@@ -174,7 +174,7 @@ def viz_kitti_video():
         img = dataset.get_image(0)
         pc = dataset.get_lidar(0)
         from google.colab.patches import cv2_imshow
-        cv2_imshow("video", img)
+        cv2_imshow(img)
         draw_lidar(pc)
         raw_input()
         pc[:, 0:3] = dataset.get_calibration().project_velo_to_rect(pc[:, 0:3])
@@ -235,17 +235,17 @@ def show_image_with_boxes(img, objects, calib, show3d=True, depth=None):
         # img3 = utils.draw_projected_box3d(img3, box3d_pts_32d)
     # print("img1:", img1.shape)
     from google.colab.patches import cv2_imshow
-    cv2_imshow("2dbox", img1)
+    cv2_imshow(img1)
     # print("img3:",img3.shape)
     # Image.fromarray(img3).show()
     show3d = True
     if show3d:
         # print("img2:",img2.shape)
         from google.colab.patches import cv2_imshow
-        cv2_imshow("3dbox", img2)
+        cv2_imshow(img2)
     if depth is not None:
         from google.colab.patches import cv2_imshow
-        cv2_imshow("depth", depth)
+        cv2_imshow(depth)
     
     return img1, img2
 
