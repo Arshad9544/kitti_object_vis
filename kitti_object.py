@@ -173,7 +173,8 @@ def viz_kitti_video():
     for _ in range(len(dataset)):
         img = dataset.get_image(0)
         pc = dataset.get_lidar(0)
-        cv2.imshow("video", img)
+        from google.colab.patches import cv2_imshow
+        cv2_imshow("video", img)
         draw_lidar(pc)
         raw_input()
         pc[:, 0:3] = dataset.get_calibration().project_velo_to_rect(pc[:, 0:3])
@@ -233,15 +234,18 @@ def show_image_with_boxes(img, objects, calib, show3d=True, depth=None):
         # box3d_pts_32d = calib.project_velo_to_image(box3d_pts_3d_velo)
         # img3 = utils.draw_projected_box3d(img3, box3d_pts_32d)
     # print("img1:", img1.shape)
-    cv2.imshow("2dbox", img1)
+    from google.colab.patches import cv2_imshow
+    cv2_imshow("2dbox", img1)
     # print("img3:",img3.shape)
     # Image.fromarray(img3).show()
     show3d = True
     if show3d:
         # print("img2:",img2.shape)
-        cv2.imshow("3dbox", img2)
+        from google.colab.patches import cv2_imshow
+        cv2_imshow("3dbox", img2)
     if depth is not None:
-        cv2.imshow("depth", depth)
+        from google.colab.patches import cv2_imshow
+        cv2_imshow("depth", depth)
     
     return img1, img2
 
@@ -312,7 +316,8 @@ def show_image_with_boxes_3type(img, objects, calib, objects2d, name, objects_pr
                 img1, text_lables[n], text_pos, font, 0.5, color, 0, cv2.LINE_AA
             )
 
-    cv2.imshow("with_bbox", img1)
+    from google.colab.patches import cv2_imshow
+    cv2_imshow(img1)
     cv2.imwrite("imgs/" + str(name) + ".png", img1)
 
 
@@ -729,7 +734,8 @@ def show_lidar_topview_with_boxes(pc_velo, objects, calib, objects_pred=None):
             top_image, gt, text_lables=lines, scores=None, thickness=1, is_gt=False
         )
 
-    cv2.imshow("top_image", top_image)
+    from google.colab.patches import cv2_imshow
+    cv2_imshow("top_image", top_image)
     return top_image
 
 
