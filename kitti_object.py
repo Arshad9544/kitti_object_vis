@@ -736,7 +736,7 @@ def show_lidar_topview_with_boxes(pc_velo, objects, calib, objects_pred=None):
         )
 
     from google.colab.patches import cv2_imshow
-    cv2_imshow("top_image", top_image)
+    cv2_imshow(top_image)
     return top_image
 
 
